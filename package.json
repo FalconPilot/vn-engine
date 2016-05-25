@@ -1,0 +1,6 @@
+{
+  "name" :            "vn-engine",
+  "productName" :     "VN Engine",
+  "version" :         "0.1.0",
+  "main" :            "app.js"
+}
