@@ -2,7 +2,6 @@ const remote      = require('electron').remote
 const main        = remote.require('./app.js')
 
 const frame       = document.getElementById('frame')
-const button      = document.getElementById('clickme')
 
 let mainwindow = remote.getCurrentWindow()
 let data = mainwindow.rendererSideName
@@ -11,10 +10,6 @@ let data = mainwindow.rendererSideName
 
 function initialize() {
   resizeFrame(data.params.width, data.params.height)
-  button.addEventListener('click', function() {
-    main.changeSize(1400, 850)
-    resizeFrame(1400, 850)
-  })
 }
 
 // Resize frame
