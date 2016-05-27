@@ -1,7 +1,30 @@
 /*
+**  CSS Variables
+*/
+
+:root {
+}
+
+/*
 **  Generic classes
 */
 
 body {
   background-color: #333;
+}
+
+#global {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#frame {
+  background-color: #222;
+  border-radius: 8px;
 }
