@@ -24,7 +24,7 @@ function createWindow() {
   mainwindow = new BrowserWindow({
     width: display.size.width,
     height: display.size.height,
-    // fullscreen: true,
+    fullscreen: false,
     resizable: false,
     frame: false,
     title: package.productName
