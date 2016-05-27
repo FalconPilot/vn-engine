@@ -53,6 +53,9 @@ function formatJson(str) {
     // Current
     value += str[i]
     // Append
+    if (str[i] === ':') {
+      value += "\t"
+    }
     if (str[i] === '\{' || str[i] === ',') {
       value += "\n"
     }
