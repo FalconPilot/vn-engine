@@ -1,9 +1,9 @@
 const remote      = require('electron').remote
 const main        = remote.require('./app.js')
+const mainwindow  = remote.getCurrentWindow()
 
 const frame       = document.getElementById('frame')
 
-let mainwindow = remote.getCurrentWindow()
 let data = mainwindow.rendererSideName
 
 // Initialize window
