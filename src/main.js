@@ -8,6 +8,12 @@ let data = mainwindow.rendererSideName
 // Initialize window
 
 function initialize() {
-  frame.style.width = data.params.width.toString() + "px"
-  frame.style.height = data.params.height.toString() + "px"
+  resizeFrame(data.params.width, data.params.height)
+}
+
+// Resize frame
+
+function resizeFrame(width, height) {
+  frame.style.width = width.toString() + "px"
+  frame.style.height = height.toString() + "px"
 }

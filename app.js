@@ -24,18 +24,25 @@ function createWindow() {
   mainwindow = new BrowserWindow({
     width: display.size.width,
     height: display.size.height,
-    fullscreen: true,
+    // fullscreen: true,
     resizable: false,
     frame: false,
     title: package.productName
   })
   mainwindow.maximize()
   mainwindow.loadURL('file://' + __dirname + '/index.html')
-  mainwindow.webContents.openDevTools()
+  // mainwindow.webContents.openDevTools()
   mainwindow.rendererSideName = data
   mainwindow.webContents.on('did-finish-load', function() {
     mainwindow.webContents.executeJavaScript('initialize()')
   })
+}
+
+// Export params
+
+function exportParams(new_params) {
+  str = JSON.stringify(new_params)
+
 }
 
 // Application functions
