@@ -31,18 +31,42 @@ function createWindow() {
   })
   mainwindow.maximize()
   mainwindow.loadURL('file://' + __dirname + '/index.html')
-  // mainwindow.webContents.openDevTools()
+  mainwindow.webContents.openDevTools()
   mainwindow.rendererSideName = data
   mainwindow.webContents.on('did-finish-load', function() {
     mainwindow.webContents.executeJavaScript('initialize()')
   })
 }
 
-// Export params
+// Format json
 
-function exportParams(new_params) {
-  str = JSON.stringify(new_params)
+function formatJson(str) {
+  value = ""
+  for (i = 0; i < str.length; i++) {
+    // Prepend
+    if (str[i] === '\}') {
+      value += "\n"
+    }
+    if (str[i - 1] === '\{' || str[i - 1] === ',') {
+      value += "  "
+    }
+    // Current
+    value += str[i]
+    // Append
+    if (str[i] === '\{' || str[i] === ',') {
+      value += "\n"
+    }
+  }
+  return value
+}
 
+// Change frame size
+
+exports.changeSize = function(width, height) {
+  params.width = width
+  params.height = height
+  str = formatJson(JSON.stringify(params))
+  fs.writeFile('./data/params.json', str, 'utf8')
 }
 
 // Application functions
