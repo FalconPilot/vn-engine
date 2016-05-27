@@ -15,18 +15,21 @@ function Data() {
 }
 
 let mainwindow
+let display
 let data = new Data()
 
 // Create window
 
 function createWindow() {
   mainwindow = new BrowserWindow({
-    width: params.width,
-    height: params.height,
+    width: display.size.width,
+    height: display.size.height,
     fullscreen: true,
     resizable: false,
+    frame: false,
     title: package.productName
   })
+  mainwindow.maximize()
   mainwindow.loadURL('file://' + __dirname + '/index.html')
   mainwindow.webContents.openDevTools()
   mainwindow.rendererSideName = data
@@ -38,6 +41,8 @@ function createWindow() {
 // Application functions
 
 app.on('ready', function() {
+  const {screen: electronScreen} = require('electron')
+  display = electronScreen.getPrimaryDisplay()
   createWindow()
 })
 
