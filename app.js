@@ -38,37 +38,12 @@ function createWindow() {
   })
 }
 
-// Format json
-
-function formatJson(str) {
-  value = ""
-  for (i = 0; i < str.length; i++) {
-    // Prepend
-    if (str[i] === '\}') {
-      value += "\n"
-    }
-    if (str[i - 1] === '\{' || str[i - 1] === ',') {
-      value += "  "
-    }
-    // Current
-    value += str[i]
-    // Append
-    if (str[i] === ':') {
-      value += "\t"
-    }
-    if (str[i] === '\{' || str[i] === ',') {
-      value += "\n"
-    }
-  }
-  return value
-}
-
 // Change frame size
 
 exports.changeSize = function(width, height) {
   params.width = width
   params.height = height
-  str = formatJson(JSON.stringify(params))
+  str = JSON.stringify(params, null, 2)
   fs.writeFile('./data/params.json', str, 'utf8')
 }
 
