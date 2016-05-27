@@ -3,20 +3,23 @@ const fs          = require('fs')
 const path        = require('path')
 const package     = require('./package.json')
 const params      = require('./data/params.json')
+const menus       = require('./data/menu.json')
 
 const app = electron.app
 const BrowserWindow = electron.BrowserWindow
+
+let mainwindow
+let display
+let data
 
 // Data object
 
 function Data() {
   this.package = package
   this.params = params
+  this.menus = menus
+  this.display = display
 }
-
-let mainwindow
-let display
-let data = new Data()
 
 // Create window
 
@@ -52,6 +55,7 @@ exports.changeSize = function(width, height) {
 app.on('ready', function() {
   const {screen: electronScreen} = require('electron')
   display = electronScreen.getPrimaryDisplay()
+  data = new Data()
   createWindow()
 })
 
